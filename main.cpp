@@ -19,12 +19,11 @@ using namespace std;
 int main()
 {
     int a, b, c;
-    cin >> a;
-    cin >> b;
-    cin >> c;
+    cin >> a >> b >> c;
 
     int total = a + b + c;
     float answer = total / 3.0;
+
     cout << answer;
 
     return 0;
