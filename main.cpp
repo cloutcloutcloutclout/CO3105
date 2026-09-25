@@ -22,9 +22,9 @@ int main()
     cin >> a >> b >> c;
 
     int total = a + b + c;
-    float answer = total / 3.0;
+    float average = total / 3.0;
 
-    cout << answer;
+    cout << average;
 
     return 0;
 }
