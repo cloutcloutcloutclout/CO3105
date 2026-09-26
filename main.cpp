@@ -1,8 +1,8 @@
 /*
+collatz conjecture.
 
-string needs "fail" 3 times in a row and return ALERT! or sum shit
-
-string will be like "ok ok ok fail fail fail ok ok fail ok" probs -> string stream / slice with vector
+if odd -> multiply 3, add 1
+if even -> divide by 2
 */
 
 #include <iostream>
@@ -14,30 +14,15 @@ using namespace std;
 
 int main()
 {
-    int failcount = 0;
-    string text;
+    // declare number
+    int collatz;
 
-    cout << "Enter string, type 'end' at the last word: ";
-    getline(cin, text);
-    stringstream ss;
+    // get number
+    cout << "enter number to be in collatz conjecture: ";
+    cin >> collatz;
 
-    ss << text;
-    while (ss >> text)
-    {
-        if (text == "fail")
-        {
-            failcount++;
-            if (failcount == 3)
-            {
-                cout << "ALERT!" << endl;
-                return 0;
-            }
-        }
-        else
-        {
-            failcount = 0;
-        }
-    }
-    cout << "OKAY!" << endl;
+    // test
+    cout << collatz;
+
     return 0;
 }
