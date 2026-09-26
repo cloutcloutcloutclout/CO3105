@@ -18,8 +18,14 @@ int main()
     int collatz;
 
     // get number
-    cout << "enter number to be in collatz conjecture: ";
+    cout << "enter a positive number to be in collatz conjecture: ";
     cin >> collatz;
+
+    if (collatz <= 0)
+    {
+        cout << "Entered a number which is 0 or under (negative), ending";
+        return 0;
+    }
 
     // print initial value first.
     cout << collatz << " ";
