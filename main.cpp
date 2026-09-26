@@ -1,30 +1,25 @@
 /*
 
-[15 points] Write a program that reads three integers from the standard input,
- and output their average (as a floating point number) to the standard output.
-You can assume the input is correct (i.e. actually integers) and each of the integers fit inside a C++ int.
- (Similar assumptions apply to the other questions.)
+string needs "fail" 3 times in a row and return ALERT! or sum shit
 
-Sample input 1:
-1 2 3
-
-Sample output 1:
-2
-
+string will be like "ok ok ok fail fail fail ok ok fail ok" probs -> string stream / slice with vector
 */
 
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+
 using namespace std;
 
 int main()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
+    int failcount = 0;
+    string text;
 
-    int total = a + b + c;
-    float average = total / 3.0;
+    cout << "Enter string: ";
+    getline(cin, text);
 
-    cout << average;
-
+    cout << text;
     return 0;
 }
