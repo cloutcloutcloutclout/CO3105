@@ -21,8 +21,22 @@ int main()
     cout << "enter number to be in collatz conjecture: ";
     cin >> collatz;
 
-    // test
-    cout << collatz;
+    // print initial value first.
+    cout << collatz << " ";
+
+    while (collatz != 1)
+    {
+        if (collatz % 2 == 0)
+        {
+            collatz = collatz / 2;
+        }
+        else
+        {
+            collatz = collatz * 3 + 1;
+        }
+
+        cout << collatz << " ";
+    }
 
     return 0;
 }
