@@ -17,9 +17,27 @@ int main()
     int failcount = 0;
     string text;
 
-    cout << "Enter string: ";
+    cout << "Enter string, type 'end' at the last word: ";
     getline(cin, text);
+    stringstream ss;
 
-    cout << text;
+    ss << text;
+    while (ss >> text)
+    {
+        if (text == "fail")
+        {
+            failcount++;
+            if (failcount == 3)
+            {
+                cout << "ALERT!" << endl;
+                return 0;
+            }
+        }
+        else
+        {
+            failcount = 0;
+        }
+    }
+    cout << "OKAY!" << endl;
     return 0;
 }
