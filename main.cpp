@@ -57,7 +57,13 @@ int main()
     }
 
     // calculation
-    int ans = ((23 * year / 9) + day + 4 + year + (z / 4) - (z / 100) + (z / 400) - w) % 7;
+    int ans = ((23 * month / 9) + day + 4 + year + (z / 4) - (z / 100) + (z / 400) - w) % 7;
+
+    // days
+    string days[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+    cout << "\n"
+         << "The day is: " << days[ans];
 
     return 0;
 }
