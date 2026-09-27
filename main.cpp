@@ -1,17 +1,13 @@
 /*
-Gregorian calendar
+Optional,
+3n+1 solution again
 
-dayofweek = ([23m/9] + d + 4 + y + [z/4] - [z/100] + [z/400] - w) mod 7
+find starting numbers that lead to very large intermediate values in the sequence, relative to the value
+of the starting number.
 
-d is day
+use case: start with 10, largest number is 16 and its 1.6 times bigger than starting value (10)
+a < b, program finds within range [a..b] what is biggest ratio
 
-m is month (1-12)
-
-y is year
-
-z = y-1 if month < 3, else = y (year)
-
-w = 0 if month < 3, else = 2
 */
 
 #include <iostream>
@@ -23,47 +19,55 @@ using namespace std;
 
 int main()
 {
-    int year;
-    int day;
-    int month;
+    // get the values a & b
+    int a, b;
+    cout << "enter two numbers: ";
+    cin >> a >> b;
 
-    // year
-    cout << "Enter a year: ";
-    cin >> year;
-    // day
-    cout << "\n"
-         << "Enter a day: ";
-    cin >> day;
-    // month
-    cout << "\n"
-         << "Enter a month (1-12): ";
-    cin >> month;
-
-    // day of the week;
-    // z and w as ints
-    int z;
-    int w;
-
-    // if month < 3 / else
-    if (month < 3)
+    // use case for a < b
+    if (a > b)
     {
-        z = year - 1;
-        w = 0;
-    }
-    else
-    {
-        z = year;
-        w = 2;
+        cout << "a is bigger than b, ending...";
+        return 0;
     }
 
-    // calculation
-    int ans = ((23 * month / 9) + day + 4 + year + (z / 4) - (z / 100) + (z / 400) - w) % 7;
+    // We need to iterate from a all the way to b -> but also store the biggest ratio of  X/largestnumber = ratio
+    // also figured it out
 
-    // days
-    string days[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    // variables we need are
+    float maxratio = 0;    // the ratio itself as a float so it can be decimal
+    int number = 0;        // hold the current i value (a to b) so it'll be a integer between or those if biggest
+    int biggestnumber = 0; // largest number in that specific while loop to calc
+    int biggestnum;        // hold the value of the biggest ratio
 
-    cout << "\n"
-         << "The day is: " << days[ans];
+    for (int i = a; i <= b; i++)
+    {
+        number = i;
+        while (i != 1)
+        {
+            if (i % 2 == 0)
+            {
+                i = i / 2;
+            }
+            else
+            {
+                i = i * 3 + 1;
+            }
+            if (i > biggestnumber)
+            {
+                biggestnumber = i;
+                if (biggestnumber / number > maxratio)
+                {
+                    maxratio = biggestnumber / number;
+                    biggestnum = number;
+                }
+            }
+        }
+    }
+
+    cout << biggestnum << endl;
+    cout << biggestnumber << endl;
+    cout << maxratio;
 
     return 0;
 }
