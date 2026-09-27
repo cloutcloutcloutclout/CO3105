@@ -1,8 +1,17 @@
 /*
-collatz conjecture.
+Gregorian calendar
 
-if odd -> multiply 3, add 1
-if even -> divide by 2
+dayofweek = ([23m/9] + d + 4 + y + [z/4] - [z/100] + [z/400] - w) mod 7
+
+d is day
+
+m is month (1-12)
+
+y is year
+
+z = y-1 if month < 3, else = y (year)
+
+w = 0 if month < 3, else = 2
 */
 
 #include <iostream>
@@ -14,35 +23,41 @@ using namespace std;
 
 int main()
 {
-    // declare number
-    int collatz;
+    int year;
+    int day;
+    int month;
 
-    // get number
-    cout << "enter a positive number to be in collatz conjecture: ";
-    cin >> collatz;
+    // year
+    cout << "Enter a year: ";
+    cin >> year;
+    // day
+    cout << "\n"
+         << "Enter a day: ";
+    cin >> day;
+    // month
+    cout << "\n"
+         << "Enter a month (1-12): ";
+    cin >> month;
 
-    if (collatz <= 0)
+    // day of the week;
+    // z and w as ints
+    int z;
+    int w;
+
+    // if month < 3 / else
+    if (month < 3)
     {
-        cout << "Entered a number which is 0 or under (negative), ending";
-        return 0;
+        z = year - 1;
+        w = 0;
+    }
+    else
+    {
+        z = year;
+        w = 2;
     }
 
-    // print initial value first.
-    cout << collatz << " ";
-
-    while (collatz != 1)
-    {
-        if (collatz % 2 == 0)
-        {
-            collatz = collatz / 2;
-        }
-        else
-        {
-            collatz = collatz * 3 + 1;
-        }
-
-        cout << collatz << " ";
-    }
+    // calculation
+    int ans = ((23 * year / 9) + day + 4 + year + (z / 4) - (z / 100) + (z / 400) - w) % 7;
 
     return 0;
 }
